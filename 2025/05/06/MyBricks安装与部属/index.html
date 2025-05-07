@@ -1,0 +1,301 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta name="referrer" content="no-referrer"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>MyBricks安装与部署 | 霁月的Blog</title><meta name="author" content="霁月,1556719120@qq.com"><meta name="copyright" content="霁月"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="MyBricks安装与部署 版权声明 本文首发于本人博客，转载请注明出处和原文链接。 作者：霁月 如需转载、引用或改编本文内容，请保留以上信息，未经许可不得用于商业用途，感谢理解与支持。   ‌**MyBricks是一个低代码开发平台，主要用于企业级中后台系统的搭建。**‌ MyBricks支持多端适配，包括电脑、平板和手机，适用于各种场景如CRM、数据大屏、企业官网等。它通过低代码的形式生产组件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MyBricks安装与部署">
+<meta property="og:url" content="http://example.com/2025/05/06/MyBricks%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E5%B1%9E/index.html">
+<meta property="og:site_name" content="霁月的Blog">
+<meta property="og:description" content="MyBricks安装与部署 版权声明 本文首发于本人博客，转载请注明出处和原文链接。 作者：霁月 如需转载、引用或改编本文内容，请保留以上信息，未经许可不得用于商业用途，感谢理解与支持。   ‌**MyBricks是一个低代码开发平台，主要用于企业级中后台系统的搭建。**‌ MyBricks支持多端适配，包括电脑、平板和手机，适用于各种场景如CRM、数据大屏、企业官网等。它通过低代码的形式生产组件">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/jiyuesgit/img/raw/master/AnimeBG/2a5beaa0e521a24330d375146c3ee55c.jpeg">
+<meta property="article:published_time" content="2025-05-06T12:28:52.000Z">
+<meta property="article:modified_time" content="2025-05-07T05:28:39.230Z">
+<meta property="article:author" content="霁月">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/jiyuesgit/img/raw/master/AnimeBG/2a5beaa0e521a24330d375146c3ee55c.jpeg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "MyBricks安装与部署",
+  "url": "http://example.com/2025/05/06/MyBricks%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E5%B1%9E/",
+  "image": "https://gitee.com/jiyuesgit/img/raw/master/AnimeBG/2a5beaa0e521a24330d375146c3ee55c.jpeg",
+  "datePublished": "2025-05-06T12:28:52.000Z",
+  "dateModified": "2025-05-07T05:28:39.230Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "霁月",
+      "url": "http://example.com/520jiyue.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/blog.png"><link rel="canonical" href="http://example.com/2025/05/06/MyBricks%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E5%B1%9E/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200,"highlightFullpage":true,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: 霁月","link":"链接: ","source":"来源: 霁月的Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'MyBricks安装与部署',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/Main.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/echarts@4.9.0/dist/echarts.min.js"></script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(https://source.fomal.cc/img/home_bg.webp);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/jiyue.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://gitee.com/jiyuesgit/img/raw/master/AnimeBG/2a5beaa0e521a24330d375146c3ee55c.jpeg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">霁月的Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">MyBricks安装与部署</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">MyBricks安装与部署</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-06T12:28:52.000Z" title="发表于 2025-05-06 20:28:52">2025-05-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-07T05:28:39.230Z" title="更新于 2025-05-07 13:28:39">2025-05-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">应用安装教程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:512,&quot;messagePrev&quot;:&quot;已经过了&quot;,&quot;messageNext&quot;:&quot;天自上次更新，文章内容可能已过时。&quot;,&quot;postUpdate&quot;:&quot;2025-05-07 13:28:39&quot;}" hidden></div><h1 id="MyBricks安装与部署"><a href="#MyBricks安装与部署" class="headerlink" title="MyBricks安装与部署"></a>MyBricks安装与部署</h1><blockquote>
+<p><strong>版权声明</strong><br> 本文首发于本人博客，转载请注明出处和原文链接。<br> 作者：霁月<br> 如需转载、引用或改编本文内容，请保留以上信息，未经许可不得用于商业用途，感谢理解与支持。</p>
+</blockquote>
+<blockquote>
+<p>‌**<a target="_blank" rel="noopener" href="https://www.baidu.com/s?rsv_dl=re_dqa_generate&sa=re_dqa_generate&wd=MyBricks&rsv_pq=f8cbb4c1006c508a&oq=MyBricks%E6%98%AF%E4%BB%80%E4%B9%88&rsv_t=d190bh3VIMqYlZrlA3FO8DQst2ylKLFpH5221f0NacL623U36xPnqjanRwhbq+OpHpJvbw&tn=25017023_2_dg&ie=utf-8">MyBricks</a>是一个低代码开发平台，主要用于企业级中后台系统的搭建。**‌</p>
+<p>MyBricks支持多端适配，包括电脑、平板和手机，适用于各种场景如CRM、数据大屏、企业官网等。它通过低代码的形式生产组件，这些组件不仅适用于低代码项目，还可以在源码项目中使用。MyBricks支持微信、支付宝、抖音等小程序搭建，并能轻松连接大模型、企业微信等第三方平台，提供全面的解决方案‌</p>
+</blockquote>
+<p>[TOC]</p>
+<h3 id="✅-一-环境需要"><a href="#✅-一-环境需要" class="headerlink" title="✅ 一. 环境需要"></a>✅ 一. 环境需要</h3><ul>
+<li>已安装有 <strong>Node 14+（推荐v14.21.0）</strong>、<strong>npm</strong>或者<strong>yarn</strong>等包管理工具，推荐 npm 7.x 以上</li>
+<li>配置并启动了数据库环境，<strong>MySql 5.7 以上</strong>，如果安装的是 MySQL8.x，注意密码加密方式设置为：Legacy Password Encryption，切记不要设置为 Strong Password Encryption</li>
+<li>云服务器【我用的阿里云】</li>
+<li>远程软件【我用的FinalShell】</li>
+</ul>
+<h3 id="✅-二-安装步骤"><a href="#✅-二-安装步骤" class="headerlink" title="✅ 二.安装步骤"></a>✅ 二.安装步骤</h3><h4 id="一、服务器环境准备（CentOS-7）"><a href="#一、服务器环境准备（CentOS-7）" class="headerlink" title="一、服务器环境准备（CentOS 7）"></a>一、服务器环境准备（CentOS 7）</h4><h5 id="1-安装-Node-js（推荐-v14-21-0）【实际这个版本比较老了】"><a href="#1-安装-Node-js（推荐-v14-21-0）【实际这个版本比较老了】" class="headerlink" title="1. 安装 Node.js（推荐 v14.21.0）【实际这个版本比较老了】"></a>1. 安装 Node.js（推荐 v14.21.0）【实际这个版本比较老了】</h5><p>使用 NodeSource 安装脚本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://rpm.nodesource.com/setup_16.x | bash -</span><br><span class="line">yum install -y nodejs</span><br></pre></td></tr></table></figure>
+
+<p>检查版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/jiyuesgit/typora/raw/master/img/image-20250506202850218.png" alt="image-20250506202850218"></p>
+<h5 id="2-安装-Git（适用于-CentOS-7）"><a href="#2-安装-Git（适用于-CentOS-7）" class="headerlink" title="2. 安装 Git（适用于 CentOS 7）"></a>2. 安装 Git（适用于 CentOS 7）</h5><p>🧰 步骤 1：安装 EPEL 扩展源（确保你有最新的包）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y epel-release</span><br></pre></td></tr></table></figure>
+
+<p>🧰 步骤 2：安装 Git</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y git</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>✅ 步骤 3：验证安装</p>
+<p><img src="https://gitee.com/jiyuesgit/typora/raw/master/img/image-20250506203042655.png" alt="image-20250506203042655"></p>
+<h5 id="3-一、安装-MySQL-8-x"><a href="#3-一、安装-MySQL-8-x" class="headerlink" title="3. 一、安装 MySQL 8.x"></a>3. 一、安装 MySQL 8.x</h5><p>🧰 步骤 1：删除系统默认的 MariaDB（如有）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum remove -y mariadb-libs</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/jiyuesgit/typora/raw/master/img/image-20250506203730082.png" alt="image-20250506203730082"></p>
+<p>🧰 步骤 2：下载并安装 MySQL 8 官方 YUM 源</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://dev.mysql.com/get/mysql80-community-release-el7-11.noarch.rpm</span><br><span class="line">yum localinstall -y mysql80-community-release-el7-11.noarch.rpm</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/jiyuesgit/typora/raw/master/img/image-20250506203745957.png" alt="image-20250506203745957"></p>
+<p>🧰 步骤 3：安装 MySQL 8 服务端</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y mysql-community-server</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/jiyuesgit/typora/raw/master/img/image-20250506203758916.png" alt="image-20250506203758916"></p>
+<p>🧰步骤 4：启动并配置 MySQL 8</p>
+<p>启动并设置开机自启：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mysqld</span><br><span class="line">systemctl <span class="built_in">enable</span> mysqld</span><br></pre></td></tr></table></figure>
+
+<p>🧰步骤 5：获取初始密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep &#x27;temporary password&#x27; /var/log/mysqld.log</span><br></pre></td></tr></table></figure>
+
+<p>例如你会看到：</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A <span class="keyword">temporary</span> <span class="keyword">password</span> <span class="keyword">is</span> <span class="keyword">generated</span> <span class="keyword">for</span> root@localhost: Abc123!xyz  【Kl.aIDlgZ7cp】</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/jiyuesgit/typora/raw/master/img/image-20250506204041551.png" alt="image-20250506204041551"></p>
+<p>🧰步骤 6：登录 MySQL</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/jiyuesgit/typora/raw/master/img/image-20250506204143735.png" alt="image-20250506204143735"></p>
+<p>修改密码并切换为 Legacy 加密方式</p>
+<p>默认是使用 <strong>caching_sha2_password</strong>，我们要改成 <strong>mysql_native_password</strong>。</p>
+<p>修改密码 + 改加密方式：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">USER</span> <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED <span class="keyword">WITH</span> mysql_native_password <span class="keyword">BY</span> <span class="string">&#x27;YourNewPassword123!&#x27;</span>; </span><br><span class="line"><span class="operator">/</span><span class="operator">/</span> YourNewPassword123 【你要的密码】</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>✅ 确保密码符合强密码策略（至少包含大小写字母和数字）。</p>
+</blockquote>
+<p>（可选）开启 root 远程访问权限</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;%&#x27;</span> IDENTIFIED <span class="keyword">WITH</span> mysql_native_password <span class="keyword">BY</span> <span class="string">&#x27;Yjqwyl0718@&#x27;</span>;</span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> PRIVILEGES <span class="keyword">ON</span> <span class="operator">*</span>.<span class="operator">*</span> <span class="keyword">TO</span> <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;%&#x27;</span> <span class="keyword">WITH</span> <span class="keyword">GRANT</span> OPTION;</span><br><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
+
+<p>🔍 你可以验证一下用户是否配置正确：</p>
+<p><img src="https://gitee.com/jiyuesgit/typora/raw/master/img/image-20250506204921719.png" alt="image-20250506204921719"></p>
+<h4 id="二-mybricks安装部署"><a href="#二-mybricks安装部署" class="headerlink" title="二. mybricks安装部署"></a>二. mybricks安装部署</h4><blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/mybricks/apaas">mybricks&#x2F;apaas: 开源、支持私有化部署的低代码开发平台</a></p>
+</blockquote>
+<h5 id="1-下载源码【如果向我这样卡住，下到本地然后传上去】"><a href="#1-下载源码【如果向我这样卡住，下到本地然后传上去】" class="headerlink" title="1.下载源码【如果向我这样卡住，下到本地然后传上去】"></a>1.下载源码【如果向我这样卡住，下到本地然后传上去】</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/mybricks/apaas.git my-apaas</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/jiyuesgit/typora/raw/master/img/image-20250506205300241.png" alt="image-20250506205300241"></p>
+<p><img src="https://gitee.com/jiyuesgit/typora/raw/master/img/image-20250506205412509.png" alt="image-20250506205412509"></p>
+<p><img src="https://gitee.com/jiyuesgit/typora/raw/master/img/image-20250506205632467.png" alt="image-20250506205632467"></p>
+<h5 id="2-切换目录"><a href="#2-切换目录" class="headerlink" title="2.切换目录"></a>2.切换目录</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd my-apaas</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-配置环境变量"><a href="#3-配置环境变量" class="headerlink" title="3.配置环境变量"></a>3.配置环境变量</h5><p>在 <strong>项目根目录下</strong> 参考 <code>config.example.js</code> 创建 <code>config.js</code> 文件，并配置以下环境变量</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@description</span> 必填 数据库配置，目前仅支持 mysql 数据库</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="attr">database</span>: &#123;</span><br><span class="line">    <span class="attr">dbType</span>: <span class="string">&#x27;MYSQL&#x27;</span>,</span><br><span class="line">    <span class="attr">host</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    <span class="attr">user</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    <span class="attr">password</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    <span class="attr">port</span>: <span class="number">3306</span>,</span><br><span class="line">    <span class="attr">database</span>: <span class="string">&#x27;&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@description</span> 必填 平台配置 </span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  <span class="attr">platformConfig</span>: &#123;</span><br><span class="line">    <span class="comment">/** </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@description</span> 必填 pm2 进程名字</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="attr">appName</span>: <span class="string">&#x27;mybricks-apaas&#x27;</span>,</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@description</span> 必填 服务端口号</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="attr">port</span>: <span class="number">3102</span>,</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@description</span> [可选项] 如果是容器化技术必填，各类持久化文件的读写位置，不填写时默认取当前路径的根目录，使用绝对路径</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="attr">externalFilesStoragePath</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@description</span> [可选项] 建议设置，用于登录的时候生成jwt token的 加盐值或者私钥，可以填写一个不容易生成的随机值</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="attr">jwtSecretOrPrivateKey</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    <span class="comment">/** </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@description</span> [可选项] 网站前端各个位置的标题文案</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="attr">title</span>: <span class="string">&#x27;MyBricks开放应用平台&#x27;</span>,</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@description</span> [可选项] 网站前端页面的 favicon，支持http链接以及base64</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="attr">favicon</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@description</span> [可选项] 网站页面内的平台图标，支持http链接以及base64</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="attr">logo</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@description</span> [可选项] 指定平台运行时动态安装应用时如何安装应用的node_modules依赖，默认值为 npm i --registry=https://registry.npmmirror.com --production</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="attr">installCommand</span>: <span class="string">&#x27;npm i --registry=https://registry.npmmirror.com --production&#x27;</span>,</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@description</span> [可选项] 指定平台是否包含 用户主动登出 功能</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="attr">openLogout</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@description</span> [可选项] 指定平台是否包含 个人信息设置 功能</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="attr">openUserInfoSetting</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@description</span> [可选项] 务必谨慎操作！离线模式开关，如果部署的服务器无法访问外网的（如myBricks的中心化服务 以及 各类Cdn），请开启此开关，开启后会开启离线模式</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="attr">isPureIntranet</span>: <span class="literal">false</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@description</span> [可选项] 管理员账号与密码，初始化数据库时会使用此账号密码</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="attr">adminUser</span>: &#123;</span><br><span class="line">    <span class="attr">email</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    <span class="attr">password</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>config文件支持区分开发 &#x2F; 生产环境，开发环境优先取<code>config.development.js</code>，生产环境则优先取<code>config.production.js</code></p>
+</blockquote>
+<h5 id="4-安装依赖"><a href="#4-安装依赖" class="headerlink" title="4.安装依赖"></a>4.安装依赖</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果npm版本太低可能会无法触发一键安装钩子，建议升级到npm 7.x以上。 如若无法升级npm版本，可以手动调用 npm run postinstall 来安装依赖</p>
+</blockquote>
+<h5 id="5-部署平台"><a href="#5-部署平台" class="headerlink" title="5.部署平台"></a>5.部署平台</h5><p>编译 &#x2F; 构建产物</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure>
+
+<p>启动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run start</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/jiyuesgit/typora/raw/master/img/image-20250507130349569.png" alt="image-20250507130349569"></p>
+<h5 id="6-然后把端口开放给安全组就可以了"><a href="#6-然后把端口开放给安全组就可以了" class="headerlink" title="6. 然后把端口开放给安全组就可以了"></a>6. 然后把端口开放给安全组就可以了</h5><p><img src="https://gitee.com/jiyuesgit/typora/raw/master/img/image-20250507130816089.png" alt="image-20250507130816089"></p>
+<p><img src="https://gitee.com/jiyuesgit/typora/raw/master/img/image-20250507130840626.png" alt="image-20250507130840626"></p>
+<p>然后就是注册登录 </p>
+<p><img src="https://gitee.com/jiyuesgit/typora/raw/master/img/image-20250507131000667.png" alt="image-20250507131000667"></p>
+<p>一个本地的mybricks 就部署好了 </p>
+<blockquote>
+<p>注： 这玩意很占内存 </p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="520jiyue.github.io">霁月</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2025/05/06/MyBricks%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E5%B1%9E/">http://example.com/2025/05/06/MyBricks%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E5%B1%9E/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">霁月的Blog</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="https://gitee.com/jiyuesgit/img/raw/master/AnimeBG/2a5beaa0e521a24330d375146c3ee55c.jpeg" data-sites="facebook,twitter,wechat,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/jiyue.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">霁月</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/520jiyue"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://gitee.com/jiyuesgit" target="_blank" title="Gitee"><i class="fab fa-git" style="color: #d90013;"></i></a><a class="social-icon" href="mailto:1556719120@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://blog.csdn.net/qq_25976859" target="_blank" title="CSDN"><i class="fas fa-c" style="color: #fc5531;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MyBricks%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2"><span class="toc-number">1.</span> <span class="toc-text">MyBricks安装与部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9C%85-%E4%B8%80-%E7%8E%AF%E5%A2%83%E9%9C%80%E8%A6%81"><span class="toc-number">1.0.1.</span> <span class="toc-text">✅ 一. 环境需要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9C%85-%E4%BA%8C-%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.0.2.</span> <span class="toc-text">✅ 二.安装步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87%EF%BC%88CentOS-7%EF%BC%89"><span class="toc-number">1.0.2.1.</span> <span class="toc-text">一、服务器环境准备（CentOS 7）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85-Node-js%EF%BC%88%E6%8E%A8%E8%8D%90-v14-21-0%EF%BC%89%E3%80%90%E5%AE%9E%E9%99%85%E8%BF%99%E4%B8%AA%E7%89%88%E6%9C%AC%E6%AF%94%E8%BE%83%E8%80%81%E4%BA%86%E3%80%91"><span class="toc-number">1.0.2.1.1.</span> <span class="toc-text">1. 安装 Node.js（推荐 v14.21.0）【实际这个版本比较老了】</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85-Git%EF%BC%88%E9%80%82%E7%94%A8%E4%BA%8E-CentOS-7%EF%BC%89"><span class="toc-number">1.0.2.1.2.</span> <span class="toc-text">2. 安装 Git（适用于 CentOS 7）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85-MySQL-8-x"><span class="toc-number">1.0.2.1.3.</span> <span class="toc-text">3. 一、安装 MySQL 8.x</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C-mybricks%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2"><span class="toc-number">1.0.2.2.</span> <span class="toc-text">二. mybricks安装部署</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E4%B8%8B%E8%BD%BD%E6%BA%90%E7%A0%81%E3%80%90%E5%A6%82%E6%9E%9C%E5%90%91%E6%88%91%E8%BF%99%E6%A0%B7%E5%8D%A1%E4%BD%8F%EF%BC%8C%E4%B8%8B%E5%88%B0%E6%9C%AC%E5%9C%B0%E7%84%B6%E5%90%8E%E4%BC%A0%E4%B8%8A%E5%8E%BB%E3%80%91"><span class="toc-number">1.0.2.2.1.</span> <span class="toc-text">1.下载源码【如果向我这样卡住，下到本地然后传上去】</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E5%88%87%E6%8D%A2%E7%9B%AE%E5%BD%95"><span class="toc-number">1.0.2.2.2.</span> <span class="toc-text">2.切换目录</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">1.0.2.2.3.</span> <span class="toc-text">3.配置环境变量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96"><span class="toc-number">1.0.2.2.4.</span> <span class="toc-text">4.安装依赖</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-%E9%83%A8%E7%BD%B2%E5%B9%B3%E5%8F%B0"><span class="toc-number">1.0.2.2.5.</span> <span class="toc-text">5.部署平台</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-%E7%84%B6%E5%90%8E%E6%8A%8A%E7%AB%AF%E5%8F%A3%E5%BC%80%E6%94%BE%E7%BB%99%E5%AE%89%E5%85%A8%E7%BB%84%E5%B0%B1%E5%8F%AF%E4%BB%A5%E4%BA%86"><span class="toc-number">1.0.2.2.6.</span> <span class="toc-text">6. 然后把端口开放给安全组就可以了</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/05/06/MyBricks%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E5%B1%9E/" title="MyBricks安装与部署"><img src="https://gitee.com/jiyuesgit/img/raw/master/AnimeBG/2a5beaa0e521a24330d375146c3ee55c.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MyBricks安装与部署"/></a><div class="content"><a class="title" href="/2025/05/06/MyBricks%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E5%B1%9E/" title="MyBricks安装与部署">MyBricks安装与部署</a><time datetime="2025-05-06T12:28:52.000Z" title="发表于 2025-05-06 20:28:52">2025-05-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/09/hello-world/" title="Hello World"><img src="https://gitee.com/jiyuesgit/img/raw/master/AnimeBG/2a5beaa0e521a24330d375146c3ee55c.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2025/04/09/hello-world/" title="Hello World">Hello World</a><time datetime="2025-04-09T11:28:21.941Z" title="发表于 2025-04-09 19:28:21">2025-04-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/22/git/" title="windows安装git【通用】"><img src="https://gitee.com/jiyuesgit/img/raw/master/AnimeBG/fb70da606a25668f8711abe66fda0054.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="windows安装git【通用】"/></a><div class="content"><a class="title" href="/2025/01/22/git/" title="windows安装git【通用】">windows安装git【通用】</a><time datetime="2025-01-22T09:06:52.000Z" title="发表于 2025-01-22 17:06:52">2025-01-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/02/DeepLiveFace/" title="AI视频换脸技术Deep-Live-Cam"><img src="https://gitee.com/jiyuesgit/img/raw/master/AnimeBG/803cf709e733bba0a812c31a32173429.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AI视频换脸技术Deep-Live-Cam"/></a><div class="content"><a class="title" href="/2024/09/02/DeepLiveFace/" title="AI视频换脸技术Deep-Live-Cam">AI视频换脸技术Deep-Live-Cam</a><time datetime="2024-09-02T15:35:52.000Z" title="发表于 2024-09-02 23:35:52">2024-09-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/06/%E8%87%AA%E5%BB%BAdocker%E5%8A%A0%E9%80%9F%E9%95%9C%E5%83%8F%E6%BA%90/" title="自建docker加速镜像源"><img src="https://gitee.com/jiyuesgit/img/raw/master/AnimeBG/2a5beaa0e521a24330d375146c3ee55c.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="自建docker加速镜像源"/></a><div class="content"><a class="title" href="/2024/07/06/%E8%87%AA%E5%BB%BAdocker%E5%8A%A0%E9%80%9F%E9%95%9C%E5%83%8F%E6%BA%90/" title="自建docker加速镜像源">自建docker加速镜像源</a><time datetime="2024-07-06T03:50:52.000Z" title="发表于 2024-07-06 11:50:52">2024-07-06</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 By 霁月</div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://520jiyue.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><!-- 右边按钮阅读进度（Leonus）--><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i><span id="percent">0<span>%</span></span></button><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><div class="js-pjax"></div><script defer type="text/javascript" src="https://cdn1.tianli0.top/npm/sweetalert2@8.19.0/dist/sweetalert2.all.js"></script><script defer src="/js/lunar.js"></script><script defer src="/js/day.js"></script><script defer src="/js/days.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 190px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 160px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://gitee.com/jiyuesgit/typora/raw/master/img/typora-icon.png);"> <a class="categoryBar-list-link" href="categories/test/">test</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">git</span></li><li class="categoryBar-list-item" style="background:url(https://gitee.com/jiyuesgit/typora/raw/master/img/typora-icon.png);"> <a class="categoryBar-list-link" href="categories/AI/">AI</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">test</span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/应用安装教程/">应用安装教程</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/好用的工具/">好用的工具</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/docker/">docker</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/应用安装教程/git/">git</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/07/06/自建docker加速镜像源/" alt=""><img width="48" height="48" src="https://gitee.com/jiyuesgit/img/raw/master/AnimeBG/2a5beaa0e521a24330d375146c3ee55c.jpeg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-07-06</span><a class="blog-slider__title" href="2024/07/06/自建docker加速镜像源/" alt="">自建docker加速镜像源</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" href="2024/07/06/自建docker加速镜像源/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/06/25/服务器搭建BITwarden/" alt=""><img width="48" height="48" src="https://gitee.com/jiyuesgit/img/raw/master/AnimeBG/fb70da606a25668f8711abe66fda0054.jpeg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-06-25</span><a class="blog-slider__title" href="2024/06/25/服务器搭建BITwarden/" alt="">服务器搭建BITwarden</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" href="2024/06/25/服务器搭建BITwarden/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2025/01/22/git/" alt=""><img width="48" height="48" src="https://gitee.com/jiyuesgit/img/raw/master/AnimeBG/fb70da606a25668f8711abe66fda0054.jpeg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2025-01-22</span><a class="blog-slider__title" href="2025/01/22/git/" alt="">windows安装git【通用】</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" href="2025/01/22/git/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/09/02/DeepLiveFace/" alt=""><img width="48" height="48" src="https://gitee.com/jiyuesgit/img/raw/master/AnimeBG/803cf709e733bba0a812c31a32173429.jpeg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-09-02</span><a class="blog-slider__title" href="2024/09/02/DeepLiveFace/" alt="">AI视频换脸技术Deep-Live-Cam</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" href="2024/09/02/DeepLiveFace/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2025/04/09/hello-world/" alt=""><img width="48" height="48" src="https://gitee.com/jiyuesgit/img/raw/master/AnimeBG/2a5beaa0e521a24330d375146c3ee55c.jpeg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2025-04-09</span><a class="blog-slider__title" href="2025/04/09/hello-world/" alt="">Hello World</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" href="2025/04/09/hello-world/" alt="">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":true,"model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body></html>

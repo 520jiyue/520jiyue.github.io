@@ -243,7 +243,7 @@ div#archive {
 
 
 /**
-    分类
+    分类设置样式
  */
 .category-lists .category-list {
     margin-bottom: 0;
@@ -286,3 +286,26 @@ div#archive {
     -ms-transition: all .3s ease-out;
     transition: all .3s ease-out;
 }
+
+
+
+
+
+/*哔哩哔哩视频适配*/
+.aspect-ratio {
+    position: relative;
+    width: 90%;
+    height: auto;
+    padding-bottom: 75%;
+    margin: 3% auto;
+    text-align: center;
+}
+.aspect-ratio iframe {
+    position: absolute;
+    width: 100%;
+    height: 86%;
+    left: 0;
+    top: 0;
+}
+
+
